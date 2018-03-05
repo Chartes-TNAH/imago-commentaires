@@ -1,4 +1,4 @@
-from imago_commentaires.app import app
+from imaginatiiif.app import app
 
 if __name__ == "__main__":
     app.run(debug=True)
