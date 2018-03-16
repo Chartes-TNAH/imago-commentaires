@@ -1,0 +1,16 @@
+{% extends "conteneur.html" %}
+{% block afternav %}
+{%endblock%}
+{% block corps %}
+<h1>Bienvenue !</h1>
+    {% if commentaires %}
+    <p>{{commentaires|length}} derniers lieux enregistrés :</p>
+        <ul>
+            {% for commentaire in commentaires %}
+                <li><a href="{{url_for('commentaire', comment_id=commentaire.comment_id)}}">{{commentaire.comment_nom}}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+{% endblock %}

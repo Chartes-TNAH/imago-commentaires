@@ -1,0 +1,20 @@
+{% extends "conteneur.html" %}
+
+{% block titre %}
+    {%if commentaire %}| Commentaire : {{commentaire.comment_nom}} {% endif %}
+{% endblock %}
+
+{% block corps %}
+    {% if commentaire %}
+        <h1>{{commentaire.comment_nom}}</h1>
+        <dl>
+            <dt>Nom</dt><dd>{{commentaire.comment_nom}}</dd>
+            <dt>Lien</dt><dd>{{commentaire.comment_lien}}</dd>
+            <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
+            <dt>Auteur</dt><dd>{{commentaire.user_nom}}</dd>
+        </dl>
+    {% else %}
+        <p>La base de données est en cours de constitution</p>
+    {% endif %}
+    <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
+{% endblock %}

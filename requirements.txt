@@ -1,0 +1,6 @@
+feedparser
+requests
+lxml
+flask
+flask-sqlalchemy
+flask-login
