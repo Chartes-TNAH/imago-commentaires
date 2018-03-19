@@ -12,7 +12,7 @@ class Comment(db.Model):
 	user = db.relationship("User", back_populates="comment")
 
 	@staticmethod
-	def creercomment(nom, commentaire, lien):
+	def creercomment(nom, commentaire, lien, user_id):
 		erreurs = []
 		if not nom:
 		    erreurs.append("Le nom fourni est vide")
@@ -36,7 +36,8 @@ class Comment(db.Model):
 		comment = Comment(
 		    comment_nom=nom,
 		    comment_commentaire=commentaire,
-		    comment_lien=lien
+		    comment_lien=lien,
+			comment_user_id=user_id,
 		)
 
 		try:
