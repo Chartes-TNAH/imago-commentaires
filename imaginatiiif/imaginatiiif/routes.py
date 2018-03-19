@@ -25,7 +25,11 @@ def commentaire(comment_id):
     """
     # On a bien sûr aussi modifié le template pour refléter le changement
     unique_commentaire = Comment.query.get(comment_id)
-    return render_template("pages/comment.html", nom="Imaginatiiif", commentaire=unique_commentaire)
+    utilisateur=User.query.get(unique_commentaire.comment_user_id)
+    return render_template("pages/comment.html",
+                           nom="Imaginatiiif",
+                           commentaire=unique_commentaire,
+                           user=utilisateur)
 
 
 
@@ -62,6 +66,7 @@ def nomcommentaire():
             nom=request.form.get("nom", None),
             commentaire=request.form.get("commentaire", None),
             lien=request.form.get("lien", None),
+            user_id=current_user.get_id()
 
         )
         if statut is True:

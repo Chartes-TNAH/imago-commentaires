@@ -9,9 +9,9 @@
         <h1>{{commentaire.comment_nom}}</h1>
         <dl>
             <dt>Nom</dt><dd>{{commentaire.comment_nom}}</dd>
-            <dt>Lien</dt><dd>{{commentaire.comment_lien}}</dd>
+            <dt>Lien</dt><dd><a href="{{commentaire.comment_lien}}">{{commentaire.comment_lien}}</a>      </dd>
             <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
-            <dt>Auteur</dt><dd>{{commentaire.user_nom}}</dd>
+            <dt>Auteur</dt><dd>{{user.user_nom}}</dd>
         </dl>
     {% else %}
         <p>La base de données est en cours de constitution</p>

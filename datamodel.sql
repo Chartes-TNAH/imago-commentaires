@@ -14,6 +14,21 @@ CREATE SCHEMA IF NOT EXISTS `imaginatiiif` DEFAULT CHARACTER SET utf8 ;
 USE `imaginatiiif` ;
 
 -- -----------------------------------------------------
+-- Table `imaginatiiif`.`user`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `imaginatiiif`.`user` ;
+
+CREATE TABLE IF NOT EXISTS `imaginatiiif`.`user` (
+  `user_id` INT NOT NULL AUTO_INCREMENT,
+  `user_nom` TINYTEXT NOT NULL,
+  `user_login` VARCHAR(45) NOT NULL,
+  `user_email` TINYTEXT NOT NULL,
+  `user_password` VARCHAR(100) NOT NULL,
+  PRIMARY KEY (`user_id`),
+  UNIQUE INDEX `user_login_UNIQUE` (`user_login` ASC))
+ENGINE = InnoDB;
+
+-- -----------------------------------------------------
 -- Table `imaginatiiif`.`comment`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `imaginatiiif`.`comment` ;
@@ -35,25 +50,7 @@ CREATE TABLE IF NOT EXISTS `imaginatiiif`.`comment` (
 ENGINE = InnoDB;
 
 
--- -----------------------------------------------------
--- Table `imaginatiiif`.`user`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `imaginatiiif`.`user` ;
 
-CREATE TABLE IF NOT EXISTS `imaginatiiif`.`user` (
-  `user_id` INT NOT NULL AUTO_INCREMENT,
-  `user_nom` TINYTEXT NOT NULL,
-  `user_login` VARCHAR(45) NOT NULL,
-  `user_email` TINYTEXT NOT NULL,
-  `user_password` VARCHAR(100) NOT NULL,
-  `user_comment_id` INT,
-  PRIMARY KEY (`user_id`),
-  INDEX `fk_user_1_idx` (`user_comment_id` ASC),
-  CONSTRAINT `fk_user_1`
-  FOREIGN KEY (`user_comment_id`) REFERENCES `imaginatiiif`.`comment`(`comment_id`) ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  UNIQUE INDEX `user_login_UNIQUE` (`user_login` ASC))
-ENGINE = InnoDB;
 
 
 SET SQL_MODE = '';
