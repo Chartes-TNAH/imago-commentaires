@@ -76,7 +76,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 START TRANSACTION;
 USE `imaginatiiif`;
 INSERT INTO `imaginatiiif`.`comment` (`comment_id`, `comment_nom`, `comment_commentaire`, `comment_lien`) VALUES (0, 'Photo Bradley & Rulofson', 'Essaie1', 'http://gallica.bnf.fr/iiif/ark:/12148/btv1b8453687c/manifest.json');
-INSERT INTO `imaginatiiif`.`comment` (`comment_id`, `comment_nom`, `comment_commentaire`, `comment_lien`) VALUES (1, 'Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json');
+INSERT INTO `imaginatiiif`.`comment` (`comment_id`, `comment_nom`, `comment_commentaire`, `comment_lien`) VALUES (2, 'Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json');
 
 COMMIT;
 -- -----------------------------------------------------
