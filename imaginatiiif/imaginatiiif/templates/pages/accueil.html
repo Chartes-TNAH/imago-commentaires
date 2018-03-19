@@ -2,9 +2,9 @@
 {% block afternav %}
 {%endblock%}
 {% block corps %}
-<h1>Bienvenue !</h1>
+<h1>Bienvenue sur le site Imaginatiif!</h1>
     {% if commentaires %}
-    <p>{{commentaires|length}} derniers lieux enregistrés :</p>
+    <p>{{commentaires|length}} derniers commentaires enregistrés :</p>
         <ul>
             {% for commentaire in commentaires %}
                 <li><a href="{{url_for('commentaire', comment_id=commentaire.comment_id)}}">{{commentaire.comment_nom}}</a></li>
