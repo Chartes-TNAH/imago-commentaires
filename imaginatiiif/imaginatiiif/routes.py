@@ -18,18 +18,33 @@ def accueil():
 
 
 @app.route("/comment/<int:comment_id>")
-def commentaire(comment_id):
-    """ Route permettant l'affichage des données d'un commentaire
 
-    :param comment_id: Identifiant numérique du commentaire
-    """
+def commentaire(comment_id):
+    import requests
+
     # On a bien sûr aussi modifié le template pour refléter le changement
     unique_commentaire = Comment.query.get(comment_id)
     utilisateur=User.query.get(unique_commentaire.comment_user_id)
-    return render_template("pages/comment.html",
-                           nom="Imaginatiiif",
+    r = requests.get(unique_commentaire.comment_lien)
+    data = r.json()
+    simplified = []
+    for item in data["metadata"]:
+        try:
+            identifier = item["label"]
+
+            simplified.append(identifier)
+
+        except:
+            error = 'Pas pu récupérer les données'
+            data = {}
+    return render_template('pages/comment.html', nom='Imaginatiiif',
                            commentaire=unique_commentaire,
-                           user=utilisateur)
+                           user=utilisateur,
+                           data=data.get('metadata'))
+    #return render_template("pages/comment.html",
+                           #nom="Imaginatiiif",
+                           #commentaire=unique_commentaire,
+                           #user=utilisateur)
 
 
 
