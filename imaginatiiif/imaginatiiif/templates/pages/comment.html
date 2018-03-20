@@ -13,8 +13,16 @@
             <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
             <dt>Auteur</dt><dd>{{user.user_nom}}</dd>
         </dl>
+
+            {% for resultat in data  %}
+            <li>{{resultat.label}} : {{resultat.value}}</li>
+            {% endfor %}
+
     {% else %}
         <p>La base de données est en cours de constitution</p>
+
     {% endif %}
+
     <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
 {% endblock %}
+
