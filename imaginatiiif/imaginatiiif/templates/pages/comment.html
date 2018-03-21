@@ -5,6 +5,17 @@
 {% endblock %}
 
 {% block corps %}
+    {% if img %}
+        {% for lien in img %}
+            <div>
+               <img src={{lien}}
+                    href={{lien}}
+                    alt="Image à laquelle est lié le commentaire."
+                    width="300"/>
+            </div>
+        {% endfor %}
+    {% endif %}
+
     {% if commentaire %}
         <h1>{{commentaire.comment_nom}}</h1>
         <dl>
