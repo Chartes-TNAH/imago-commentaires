@@ -13,7 +13,7 @@
       color: #f5f6f7;
   }
   p {font-size: 16px;}
-  .margin {margin-bottom: 50px;}
+  .margin {margin-bottom: 5px;}
   .bg-1 {
       background-color: #1abc9c; /* Green */
       color: #ffffff;
@@ -56,13 +56,13 @@
 </nav>
 {% block afternav %}{%endblock%}
 <!-- bloc 1 corps de la page -->
-<div class="container-fluid bg-1 text-center">
+<div class="container-fluid bg-1">
   <h3 class="margin">imaginatiiif : commentez vos manifestes IIIF !</h3>
-  <img url({{url_for("static", filename="images/iiif.png")}}) class="img-responsive img-circle margin" style="display:inline" alt="Logo IIIF" width="200" height="200">
+  <img url({{url_for("static", filename="images\iiif.png")}}) class="rounded float-right" style="display:inline" alt="Logo IIIF" width="200" height="200">
 </div>
 
 <!-- bloc 2 corps de la page -->
-<div class="container-fluid bg-2 text-center">
+<div class="container-fluid bg-2">
   {% with messages = get_flashed_messages(with_categories=true) %}
   {% if messages %}
   <div class="row">
