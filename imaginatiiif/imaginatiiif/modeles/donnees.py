@@ -11,6 +11,8 @@ class Comment(db.Model):
 	comment_user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 	user = db.relationship("User", back_populates="comment")
 
+
+
 	@staticmethod
 	def creercomment(nom, commentaire, lien, user_id):
 		erreurs = []
@@ -39,7 +41,7 @@ class Comment(db.Model):
 		    comment_lien=lien,
 			comment_user_id=user_id,
 		)
-
+		print(comment)
 		try:
             		# On l'ajoute au transport vers la base de données
             		db.session.add(comment)
@@ -52,26 +54,29 @@ class Comment(db.Model):
             		return False, [str(erreur)]
 
 	@staticmethod
-	def modif_commentaire(nom, commentaire):
+	def modif_commentaire(id, nom, lien, commentaire):
 		erreurs = []
 		if not nom:
-			erreurs.append("Le nom fourni est vide")
+			erreurs.append("Le nom du commentaire est obligatoire")
+		if not lien:
+			erreurs.append("Il faut indiquer le lien")
 		if not commentaire:
-			erreurs.append("Le commentaire fourni est vide")
+			erreurs.append("Il faut écrire le commentaire")
 
-		# Si on a au moins une erreur
 		if len(erreurs) > 0:
+			print(erreurs, nom, lien, commentaire)
 			return False, erreurs
 
-		commentaire = Comment.query.get(id)
+		commentaires = Comment.query.get(id)
 
-		commentaire.comment_nom = nom
-		commentaire.comment_commentaire = commentaire
+		commentaires.comment_nom = nom
+		commentaires.comment_lien = lien
+		commentaires.comment_commentaire = commentaire
 
 
 		try:
 			# On l'ajoute au transport vers la base de données
-			db.session.add(commentaire)
+			db.session.add(commentaires)
 			# On envoie le paquet
 			db.session.commit()
 

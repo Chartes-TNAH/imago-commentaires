@@ -50,8 +50,11 @@ def commentaire(comment_id):
 @login_required
 def modif_commentaire(comment_id):
     status, donnees = Comment.modif_commentaire(
+        id=comment_id,
         nom=request.args.get("nom", None),
+        lien=request.args.get("lien", None),
         commentaire=request.args.get("commentaire", None),
+
     )
 
     if status is True :
