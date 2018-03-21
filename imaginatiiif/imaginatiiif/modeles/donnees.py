@@ -4,7 +4,7 @@ import datetime
 # On crée notre modèle
 class Comment(db.Model):
 	comment_id = db.Column(db.Integer, unique=True, nullable=False, primary_key=True, autoincrement=True)
-	comment_nom = db.Column(db.Text)
+	comment_nom = db.Column(db.Text, nullable=False)
 	comment_commentaire = db.Column(db.Text, nullable=False)
 	comment_lien = db.Column(db.Text, nullable=False)
 	#comment_date = db.Column(db.DateTime, index=True, default=datetime.utcnow)
@@ -50,3 +50,32 @@ class Comment(db.Model):
             		return True, comment
 		except Exception as erreur:
             		return False, [str(erreur)]
+
+	@staticmethod
+	def modif_commentaire(nom, commentaire):
+		erreurs = []
+		if not nom:
+			erreurs.append("Le nom fourni est vide")
+		if not commentaire:
+			erreurs.append("Le commentaire fourni est vide")
+
+		# Si on a au moins une erreur
+		if len(erreurs) > 0:
+			return False, erreurs
+
+		commentaire = Comment.query.get(id)
+
+		commentaire.comment_nom = nom
+		commentaire.comment_commentaire = commentaire
+
+
+		try:
+			# On l'ajoute au transport vers la base de données
+			db.session.add(commentaire)
+			# On envoie le paquet
+			db.session.commit()
+
+			# On renvoie le commentaire
+			return True, commentaire
+		except Exception as erreur:
+			return False, [str(erreur)]
