@@ -15,13 +15,13 @@ class Comment(db.Model):
 	def creercomment(nom, commentaire, lien, user_id):
 		erreurs = []
 		if not nom:
-		    erreurs.append("Le nom fourni est vide")
+		    erreurs.append("Le champ nom est vide")
 		if not commentaire:
-			erreurs.append("Le commentaire fourni est vide")
+			erreurs.append("Le champ commentaire est vide")
 		if not lien:
-			erreurs.append("Le lien fourni est vide")
-		
-		# On vérifie que le lien n'existe pas 
+			erreurs.append("Le champ lien est vide")
+
+		# On vérifie que le lien n'existe pas
 		#uniques = Place.query.filter(
 		#    db.or_(Place.place_nom == nom)
 		#).count()
@@ -32,7 +32,7 @@ class Comment(db.Model):
 		if len(erreurs) > 0:
 		    return False, erreurs
 
-		# On crée un lieu
+		# On crée un commentaire
 		comment = Comment(
 		    comment_nom=nom,
 		    comment_commentaire=commentaire,

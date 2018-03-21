@@ -107,7 +107,7 @@ def connexion():
             motdepasse=request.form.get("motdepasse", None)
         )
         if utilisateur:
-            flash("Connexion effectuée", "success")
+            flash("Vous êtes connecté-e", "success")
             login_user(utilisateur)
             return redirect("/")
         else:

@@ -5,24 +5,24 @@
 {% block corps %}
 
 <h1>Commentaire d'images</h1>
-<p>Complétez le formulaire et cliquez sur "Ajouter un commentaire".</p>
+<p>Complétez le formulaire et cliquez sur "Enregistrer".</p>
 <form class="form" method="POST" action="{{url_for("nomcommentaire")}}"> <!--POST car il y a beaucoup d'info-->
   <div class="form-group row">
     <label for="nom-commentaire" class="col-sm-2 col-form-label">Nom</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="nom-commentaire" placeholder="Nom du commentaire" name="nom">
+      <input type="text" class="form-control" id="nom-commentaire" placeholder="titre du commentaire" name="nom">
     </div>
   </div>
   <div class="form-group row">
     <label for="commentaire-commentaire" class="col-sm-2 col-form-label">Commentaire</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="commentaire-commentaire" placeholder="ajout d'un commentaire" name="commentaire">
+      <input type="text" class="form-control" id="commentaire-commentaire" placeholder="votre commentaire" name="commentaire">
     </div>
   </div>
   <div class="form-group row">
     <label for="lien-commentaire" class="col-sm-2 col-form-label">Lien vers le manifeste</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="lien-commentaire" placeholder="Lien vers le manifeste" name="lien">
+      <input type="text" class="form-control" id="lien-commentaire" placeholder="lien vers le manifeste" name="lien">
     </div>
   </div>
   <div>

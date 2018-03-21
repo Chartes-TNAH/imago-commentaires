@@ -1,63 +1,84 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <title>Imaginatiiif {%block titre %}{%endblock%}</title>
-        {% include "partials/css.html" %}
-        {% include "partials/metadata.html" %}
-        <style type="text/css">
-            .hero  {
-                background-position: center center;
-                padding:10vh;
-                background-image: url({{url_for("static", filename="images/gallica_btv1b55007071f.jpeg")}});
-            }
-            .container .hero {
-                background-image: none;
-            }
-        </style>
-    </head>
-    <body>
+<head>
+  <!-- Theme from Bootstrap - No copyright -->
+  <meta charset="utf-8"></meta>
+  <title>Imaginatiiif {%block titre %}{%endblock%}</title>
+{% include "partials/css.html" %}
+{% include "partials/metadata.html" %}
+  <style>
+  body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+  }
+  p {font-size: 16px;}
+  .margin {margin-bottom: 50px;}
+  .bg-1 {
+      background-color: #1abc9c; /* Green */
+      color: #ffffff;
+  }
+  .bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+  .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+  }
+  .navbar-nav  li a:hover {
+      color:  #002B90 !important;
+  }
+  </style>
+</head>
+<body>
+<!-- barre de navigation -->
+<nav class="navbar navbar-default">
+      <a class="navbar-brand" href="{{ url_for('accueil') }}">imaginatiiif</a>
+      <ul class="nav navbar-nav navbar-right">
+        {% if not current_user.is_authenticated %}
+        <li class="nav-item"><a class="nav-link" href="{{url_for("inscription")}}">Inscription</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for("connexion")}}">Connexion</a></li>
+        {% else %}
+        <li class="nav-item"><a class="nav-link" href="{{url_for("deconnexion")}}">Déconnexion ({{current_user.user_nom}})</a></li>
+        <li class="nav-item"><a class="nav-link" href="{{url_for("nomcommentaire")}}">Nouveau commentaire</a></li>
+        {% endif %}
+      </ul>
+</nav>
+{% block afternav %}{%endblock%}
+<!-- bloc 1 corps de la page -->
+<div class="container-fluid bg-1 text-center">
+  <h3 class="margin">imaginatiiif : commentez vos manifestes IIIF !</h3>
+  <img url({{url_for("static", filename="images/iiif.png")}}) class="img-responsive img-circle margin" style="display:inline" alt="Logo IIIF" width="200" height="200">
+</div>
 
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand" href="{{ url_for('accueil') }}">Imaginatiif</a>
-
-        <ul class="navbar-nav mr-auto">
-            {% if not current_user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("inscription")}}">Inscription</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("connexion")}}">Connexion</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("deconnexion")}}">Déconnexion ({{current_user.user_nom}})</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("nomcommentaire")}}">Nouveau commentaire</a>
-              </li>
- 			
-            {% endif %}
-        </ul>
-      </nav>
-      {% block afternav %}{%endblock%} #pour intégrer des messages flash
-      <div class="container">
-        {% with messages = get_flashed_messages(with_categories=true) %}
-          {% if messages %}
-          <div class="row">
-              <div class="col">
-                {% for category, message in messages %}
-                  <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
-                {% endfor %}
-              </div>
-          </div>
-          {% endif %}
-        {% endwith %}
-        <div class="row">
-            <div class="col">
-            {% block corps %}{% endblock %}
-            </div>
-        </div>
+<!-- bloc 2 corps de la page -->
+<div class="container-fluid bg-2 text-center">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+  <div class="row">
+      <div class="col">
+        {% for category, message in messages %}
+          <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
+        {% endfor %}
       </div>
-    </body>
+  </div>
+  {% endif %}
+{% endwith %}
+<div class="row">
+    <div class="col">
+    {% block corps %}{% endblock %}
+    </div>
+</div>
+</div>
+</body>
 </html>
