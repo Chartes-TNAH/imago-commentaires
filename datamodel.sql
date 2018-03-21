@@ -35,7 +35,7 @@ DROP TABLE IF EXISTS `imaginatiiif`.`comment` ;
 
 CREATE TABLE IF NOT EXISTS `imaginatiiif`.`comment` (
   `comment_id` INT NOT NULL AUTO_INCREMENT COMMENT '	',
-  `comment_nom` TINYTEXT NULL,
+  `comment_nom` TINYTEXT NOT NULL,
   `comment_commentaire` TEXT NOT NULL,
   `comment_lien` TEXT NOT NULL,
   `comment_date` DATETIME NULL DEFAULT CURRENT_TIMESTAMP,

@@ -13,6 +13,8 @@ class User(UserMixin, db.Model):
     comment = db.relationship('Comment', back_populates="user")
 
 
+
+
     @staticmethod
     def identification(login, motdepasse):
         """ Identifie un utilisateur. Si cela fonctionne, renvoie les données de l'utilisateurs.

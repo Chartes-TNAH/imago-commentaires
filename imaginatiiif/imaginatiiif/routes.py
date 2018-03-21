@@ -46,6 +46,27 @@ def commentaire(comment_id):
                            #commentaire=unique_commentaire,
                            #user=utilisateur)
 
+@app.route("/modif_commentaire/<int:comment_id>")
+@login_required
+def modif_commentaire(comment_id):
+    status, donnees = Comment.modif_commentaire(
+        id=comment_id,
+        nom=request.args.get("nom", None),
+        lien=request.args.get("lien", None),
+        commentaire=request.args.get("commentaire", None),
+
+    )
+
+    if status is True :
+        flash("Merci pour votre contribution !", "success")
+        unique_commentaire = Comment.query.get(comment_id)
+        return redirect("/") #vers le lieu qu'il vient de créer.
+
+    else:
+        flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
+        unique_commentaire = Comment.query.get(comment_id)
+        return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
+
 
 
 
