@@ -46,7 +46,7 @@ def commentaire(comment_id):
         except:
             error = "Pas pu récupérer d'image"
             data = {}
-    print(image)
+
     return render_template('pages/comment.html', nom='Imaginatiiif',
                            commentaire=unique_commentaire,
                            user=utilisateur,
@@ -57,14 +57,14 @@ def commentaire(comment_id):
                            #commentaire=unique_commentaire,
                            #user=utilisateur)
 
-@app.route("/modif_commentaire/<int:comment_id>")
+@app.route("/modif_commentaire/<int:comment_id>", methods=["GET", "POST"])
 @login_required
 def modif_commentaire(comment_id):
     status, donnees = Comment.modif_commentaire(
         id=comment_id,
-        nom=request.args.get("nom", None),
-        lien=request.args.get("lien", None),
-        commentaire=request.args.get("commentaire", None),
+        nom=request.form.get("nom", None),
+        lien=request.form.get("lien", None),
+        commentaire=request.form.get("commentaire", None),
 
     )
 
