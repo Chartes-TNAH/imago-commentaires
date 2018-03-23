@@ -1,3 +1,9 @@
-imaginatiiif/imaginatiiif/__pycache__
-imaginatiiif/imaginatiiif/modeles/__pycache__
-.idea
+resultats/*.txt
+.DS_Store
+.ipynb_checkpoints/
+*-checkpoint.ipynb
+.pyc
+*Copy*.ipynb
+*.pyc
+.~lock*
+__pycache__
