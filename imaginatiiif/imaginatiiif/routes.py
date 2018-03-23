@@ -60,25 +60,26 @@ def commentaire(comment_id):
 @app.route("/modif_commentaire/<int:comment_id>", methods=["GET", "POST"])
 @login_required
 def modif_commentaire(comment_id):
-    status, donnees = Comment.modif_commentaire(
+	commentaire = Comment.query.get(comment_id)
+	if current_user.get_id() != commentaire.comment_user_id:
+            flash("Vous n'avez pas l'autorisation de modifier ce commentaire", 'error')
+            return render_template("pages/modif_commentaire.html", commentaire=commentaire)
+
+	(status, donnees) = Comment.modif_commentaire(
         id=comment_id,
         nom=request.form.get("nom", None),
         lien=request.form.get("lien", None),
         commentaire=request.form.get("commentaire", None),
-
     )
 
-    if status is True :
-        flash("Merci pour votre contribution !", "success")
-        unique_commentaire = Comment.query.get(comment_id)
-        return redirect("/") #vers le lieu qu'il vient de créer.
+	if status is True:
+            flash('Merci de votre contribution', 'success')
+            return redirect('/')
 
-    else:
-        flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
-        unique_commentaire = Comment.query.get(comment_id)
-        return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
-
-
+	else:
+        	flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
+        	unique_commentaire = Comment.query.get(comment_id)
+        	return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
 
 
 @app.route("/register", methods=["GET", "POST"])
