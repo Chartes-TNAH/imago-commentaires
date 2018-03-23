@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="439f5611-2545-4e9f-962c-716f286d93de" name="Default" comment="" />
+=======
+    <list default="true" id="439f5611-2545-4e9f-962c-716f286d93de" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/imaginatiiif/imaginatiiif/routes.py" afterPath="$PROJECT_DIR$/imaginatiiif/imaginatiiif/routes.py" />
+      <change beforePath="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html" afterPath="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html" />
+    </list>
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -35,8 +42,13 @@
       <file leaf-file-name="comment.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="378">
               <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+=======
+            <state relative-caret-position="315">
+              <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
               <folding />
             </state>
           </provider>
@@ -55,8 +67,13 @@
       <file leaf-file-name="donnees.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/donnees.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="990">
               <caret line="56" column="26" lean-forward="false" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
+=======
+            <state relative-caret-position="412">
+              <caret line="78" column="39" lean-forward="false" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
               <folding>
                 <element signature="e#0#21#0" expanded="true" />
                 <marker date="1521644684000" expanded="true" signature="86:222" ph="..." />
@@ -65,9 +82,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="modif_commentaire.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="modif_commentaire.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/modif_commentaire.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="468">
               <caret line="32" column="7" lean-forward="false" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
               <folding>
@@ -75,6 +93,31 @@
                 <marker date="1521644686000" expanded="true" signature="1110:1130" ph="..." />
                 <marker date="1521644686000" expanded="true" signature="1110:1226" ph="..." />
               </folding>
+=======
+            <state relative-caret-position="240">
+              <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="nomcommentaire.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/nomcommentaire.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="inscription.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/inscription.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
             </state>
           </provider>
         </entry>
@@ -82,8 +125,13 @@
       <file leaf-file-name="utilisateurs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/utilisateurs.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="18">
               <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+=======
+            <state relative-caret-position="165">
+              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
               <folding>
                 <element signature="e#0#73#0" expanded="true" />
                 <marker date="1521644684000" expanded="true" signature="172:3239" ph="..." />
@@ -99,11 +147,16 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="routes.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/routes.py">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="248">
               <caret line="26" column="66" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="26" selection-end-column="66" />
+=======
+            <state relative-caret-position="660">
+              <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
               <folding>
                 <element signature="e#0#59#0" expanded="true" />
               </folding>
@@ -138,19 +191,26 @@
         <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/nomlieu.html" />
         <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/place.html" />
         <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/conteneur.html" />
-        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/utilisateurs.py" />
-        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/modif_commentaire.html" />
         <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html" />
         <option value="$PROJECT_DIR$/datamodel.sql" />
-        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/donnees.py" />
         <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/routes.py" />
+        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/utilisateurs.py" />
+        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/donnees.py" />
+        <option value="$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/modif_commentaire.html" />
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="64" />
     <option name="y" value="-11" />
     <option name="width" value="1303" />
+=======
+  <component name="ProjectFrameBounds" extendedState="1">
+    <option name="x" value="6" />
+    <option name="y" value="23" />
+    <option name="width" value="976" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
     <option name="height" value="780" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -299,10 +359,17 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21060723" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <frame x="6" y="23" width="976" height="780" extended-state="1" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31045082" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -631,20 +698,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/inscription.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/nomcommentaire.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-108">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/constantes.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -659,6 +712,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/utilisateurs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -677,6 +731,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
     <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/connexion.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -693,8 +749,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/modif_commentaire.html">
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/inscription.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="468">
           <caret line="32" column="7" lean-forward="false" selection-start-line="32" selection-start-column="7" selection-end-line="32" selection-end-column="7" />
           <folding>
@@ -702,6 +759,11 @@
             <marker date="1521644686000" expanded="true" signature="1110:1130" ph="..." />
             <marker date="1521644686000" expanded="true" signature="1110:1226" ph="..." />
           </folding>
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
         </state>
       </provider>
     </entry>
@@ -713,32 +775,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html">
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/nomcommentaire.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="378">
           <caret line="21" column="62" lean-forward="false" selection-start-line="21" selection-start-column="62" selection-end-line="21" selection-end-column="62" />
+=======
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/donnees.py">
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/utilisateurs.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="990">
           <caret line="56" column="26" lean-forward="false" selection-start-line="56" selection-start-column="26" selection-end-line="56" selection-end-column="26" />
           <folding>
             <element signature="e#0#21#0" expanded="true" />
             <marker date="1521644684000" expanded="true" signature="86:222" ph="..." />
+=======
+        <state relative-caret-position="165">
+          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#73#0" expanded="true" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/routes.py">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="248">
           <caret line="26" column="66" lean-forward="false" selection-start-line="25" selection-start-column="4" selection-end-line="26" selection-end-column="66" />
+=======
+        <state relative-caret-position="660">
+          <caret line="74" column="0" lean-forward="true" selection-start-line="74" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+>>>>>>> f5082095c305e5093ee6429d284f37477d474925
           <folding>
             <element signature="e#0#59#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/comment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="32" column="62" lean-forward="false" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/modeles/donnees.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="412">
+          <caret line="78" column="39" lean-forward="false" selection-start-line="78" selection-start-column="39" selection-end-line="78" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/imaginatiiif/imaginatiiif/templates/pages/modif_commentaire.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="30" lean-forward="true" selection-start-line="16" selection-start-column="30" selection-end-line="16" selection-end-column="30" />
+          <folding />
         </state>
       </provider>
     </entry>
