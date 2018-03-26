@@ -9,10 +9,14 @@
       <div class="col-8 col-sm-6">
         {% if img %}
           {% for lien in img %}
-          <img src={{lien}}
-             href={{lien}}
-             alt="Image à laquelle est lié le commentaire."
-             width="300"/>
+          <span title="Afficher l'image en grand">
+            <a href={{lien}}>
+              <img src={{lien}}
+                href={{lien}}
+                alt="Image à laquelle est lié le commentaire."
+                width="200"/>
+            </a>
+          </span>
           {% endfor %}
         {% endif %}
       </div>
