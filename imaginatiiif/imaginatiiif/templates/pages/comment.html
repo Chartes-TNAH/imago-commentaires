@@ -21,22 +21,27 @@
           <h1>{{commentaire.comment_nom}}</h1>
             <dl>
               <dt>Nom</dt><dd>{{commentaire.comment_nom}}</dd>
-              <dt>Lien</dt><dd><a href="{{commentaire.comment_lien}}">{{commentaire.comment_lien}}</a>      </dd>
-              <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
+              <dt>Lien</dt><dd><a href="{{commentaire.comment_lien}}">{{commentaire.comment_lien}}</a></dd>
               <dt>Auteur</dt><dd>{{user.user_nom}}</dd>
+              <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
             </dl>
-
-            {% for resultat in data  %}
-              <li>{{resultat.label}} : {{resultat.value}}</li>
-            {% endfor %}
         {% else %}
           <p>La base de données est en cours de constitution</p>
         {% endif %}
     </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+    <h1>Métadonnées :</h1>
+      <dl>
+        {% for resultat in data  %}
+        <li>{{resultat.label}} : {{resultat.value}}</li>
+        {% endfor %}
+      </dl>
+    </div>
+  </div>
     {% if current_user.is_authenticated %}
     <p><a class="nav-link" href="{{url_for('modif_commentaire', comment_id=commentaire.comment_id)}}">Editer le commentaire</a>
-
     {%endif %}
-
     <p><a href="{{url_for('accueil')}}">Retour à l'accueil</a></p>
 {% endblock %}
