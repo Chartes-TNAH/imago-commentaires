@@ -4,13 +4,13 @@
 {% block corps %}
 <h1>bienvenue sur le site imaginatiiif !</h1>
     {% if commentaires %}
-    <p>{{commentaires|length}} Voici les derniers commentaires enregistrés :</p>
+    <p>{{commentaires|length}} commentaires enregistrés :</p>
         <ul>
             {% for commentaire in commentaires %}
                 <li><a href="{{url_for('commentaire', comment_id=commentaire.comment_id)}}">{{commentaire.comment_nom}}</a></li>
             {% endfor %}
         </ul>
     {% else %}
-
+    <p>Pour pouvoir enregistrer un commentaire, vous devez d'abord vous inscrire.</p>
     {% endif %}
 {% endblock %}
