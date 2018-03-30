@@ -37,12 +37,19 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{url_for("connexion")}}">Connexion</a>
               </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for("all_comments")}}">Tous les commentaires</a>
+              </li>
             {% else %}
               <li class="nav-item">
                 <a class="nav-link" href="{{url_for("deconnexion")}}">Déconnexion ({{current_user.user_nom}})</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{url_for("nomcommentaire")}}">Nouveau commentaire</a>
+              </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{url_for("comment_auteur")}}">Mes commentaires</a>
               </li>
 
             {% endif %}

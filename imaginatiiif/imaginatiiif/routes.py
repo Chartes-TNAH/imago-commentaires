@@ -1,10 +1,9 @@
 from flask import render_template, request, flash, redirect
 
-
 from .app import app, login
 from .modeles.donnees import Comment
 from .modeles.utilisateurs import User
-#from .constantes import LIEUX_PAR_PAGE
+# from .constantes import LIEUX_PAR_PAGE
 from flask_login import login_user, current_user, logout_user, login_required
 
 
@@ -16,15 +15,20 @@ def accueil():
     commentaires = Comment.query.order_by(Comment.comment_id.desc()).limit(5).all()
     return render_template("pages/accueil.html", nom="Imaginatiiif", commentaires=commentaires)
 
+@app.route("/comments")
+def all_comments():
+    """ Route permettant l'affichage d'une page accueil
+    """
+    commentaires = Comment.query.order_by(Comment.comment_id.desc()).all()
+    return render_template("pages/all_comments.html", nom="Imaginatiiif", commentaires=commentaires)
 
 @app.route("/comment/<int:comment_id>")
-
 def commentaire(comment_id):
     import requests
 
     # On a bien sûr aussi modifié le template pour refléter le changement
     unique_commentaire = Comment.query.get(comment_id)
-    utilisateur=User.query.get(unique_commentaire.comment_user_id)
+    utilisateur = User.query.get(unique_commentaire.comment_user_id)
     r = requests.get(unique_commentaire.comment_lien)
     data = r.json()
     simplified = []
@@ -51,35 +55,32 @@ def commentaire(comment_id):
                            commentaire=unique_commentaire,
                            user=utilisateur,
                            data=data.get('metadata'),
-                           img = image)
-    #return render_template("pages/comment.html",
-                           #nom="Imaginatiiif",
-                           #commentaire=unique_commentaire,
-                           #user=utilisateur)
+                           img=image)
+
 
 @app.route("/modif_commentaire/<int:comment_id>", methods=["GET", "POST"])
 @login_required
 def modif_commentaire(comment_id):
-	commentaire = Comment.query.get(comment_id)
-	if current_user.get_id() != commentaire.comment_user_id:
-            flash("Vous n'avez pas l'autorisation de modifier ce commentaire", 'error')
-            return render_template("pages/modif_commentaire.html", commentaire=commentaire)
+    commentaire = Comment.query.get(comment_id)
+    if current_user.get_id() != commentaire.comment_user_id:
+        flash("Vous n'avez pas l'autorisation de modifier ce commentaire", 'error')
+        return render_template("pages/modif_commentaire.html", commentaire=commentaire)
 
-	(status, donnees) = Comment.modif_commentaire(
+    (status, donnees) = Comment.modif_commentaire(
         id=comment_id,
         nom=request.form.get("nom", None),
         lien=request.form.get("lien", None),
         commentaire=request.form.get("commentaire", None),
     )
 
-	if status is True:
-            flash('Merci de votre contribution', 'success')
-            return redirect('/')
+    if status is True:
+        flash('Merci de votre contribution', 'success')
+        return redirect('/')
 
-	else:
-        	flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
-        	unique_commentaire = Comment.query.get(comment_id)
-        	return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
+    else:
+        flash("Les erreurs suivantes ont été rencontrées : " + ",".join(donnees), "error")
+        unique_commentaire = Comment.query.get(comment_id)
+        return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -102,6 +103,7 @@ def inscription():
             return render_template("pages/inscription.html")
     else:
         return render_template("pages/inscription.html")
+
 
 @app.route("/nomcommentaire", methods=["GET", "POST"])
 @login_required
@@ -126,6 +128,15 @@ def nomcommentaire():
     else:
         return render_template("pages/nomcommentaire.html")
 
+
+@app.route("/utilisateur")
+def comment_auteur():
+    """ Route permettant l'affichage d'une page avec les commentaires d'un auteur
+        """
+    commentaires = Comment.query.filter(Comment.comment_user_id == current_user.get_id()).all()
+    return render_template("pages/comment_auteur.html", nom="Imaginatiiif", commentaires=commentaires)
+
+
 @app.route("/connexion", methods=["POST", "GET"])
 def connexion():
     """ Route gérant les connexions
@@ -147,6 +158,8 @@ def connexion():
             flash("Les identifiants n'ont pas été reconnus", "error")
 
     return render_template("pages/connexion.html")
+
+
 login.login_view = 'connexion'
 
 
