@@ -1,72 +1,85 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+      <!-- Theme from Bootstrap - No copyright -->
         <meta charset="UTF-8">
         <title>Imaginatiiif {%block titre %}{%endblock%}</title>
         {% include "partials/css.html" %}
         {% include "partials/metadata.html" %}
-        <style type="text/css">
-            .hero  {
-                background-position: center center;
-                padding:10vh;
-                background-image: url({{url_for("static", filename="images/gallica_btv1b55007071f.jpeg")}});
-            }
-            .container .hero {
-                background-image: none;
-            }
-            .textarea{
-              vertical-align: top;
-              height: 5em;
-              resize: vertical;
-            }
+        <style>
+        body {
+            font: 20px Montserrat, sans-serif;
+            line-height: 1.8;
+            color: #f5f6f7;
+        }
+        p {font-size: 16px;}
+        .margin {margin-top: 30px;}
+        .margin {margin-bottom: 0px;}
+        .margin {margin-left: 10px;}
+        .bg-1 {
+            background-color: #1abc9c; /* Green */
+            color: #ffffff;
+        }
+        .bg-2 {
+          padding-top: 70px;
+          padding-bottom: 200px;
+          padding-left: 10px;
+          background-color: #474e5d; /* Dark Blue */
+          color: #ffffff;
+          border: 10px;
+        }
+        .navbar {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            border: 0;
+            border-radius: 0;
+            margin-bottom: 0;
+            font-size: 12px;
+            letter-spacing: 5px;
+        }
+        .navbar-nav  li a:hover {
+            color:  #002B90 !important;
+        }
         </style>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
          crossorigin="anonymous"></link>
     </head>
     <body>
-
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark justify-content-between">
-        <a class="navbar-brand" href="{{ url_for('accueil') }}">Imaginatiif</a>
-
-        <ul class="navbar-nav mr-auto">
-            {% if not current_user.is_authenticated %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("inscription")}}">Inscription</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("connexion")}}">Connexion</a>
-              </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for("all_comments")}}">Tous les commentaires</a>
-              </li>
-            {% else %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("deconnexion")}}">Déconnexion ({{current_user.user_nom}})</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for("nomcommentaire")}}">Nouveau commentaire</a>
-              </li>
-
-            <li class="nav-item">
-                <a class="nav-link" href="{{url_for("comment_auteur")}}">Mes commentaires</a>
-              </li>
-
-            {% endif %}
-        </ul>
+      <!-- barre de navigation -->
+      <nav class="navbar navbar-default">
+            <a class="navbar-brand" href="{{ url_for('accueil') }}">imaginatiiif</a>
+            <ul class="nav navbar-nav navbar-right">
+              {% if not current_user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link" href="{{url_for("inscription")}}">Inscription</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for("connexion")}}">Connexion</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for("all_comments")}}">Tous les commentaires</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link" href="{{url_for("deconnexion")}}">Déconnexion ({{current_user.user_nom}})</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for("nomcommentaire")}}">Nouveau commentaire</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{url_for("comment_auteur")}}">Mes commentaires</a></li>
+              {% endif %}
+            </ul>
       </nav>
-
       {% block afternav %}{%endblock%}
-      <div class="container">
-        {% block content %}
-    <div class="container">
-        {% with messages = get_flashed_messages() %}
+      <!-- bloc 1 corps de la page -->
+      <div class="bg-1">
+        <h3 class="margin">imaginatiiif : commentez vos manifestes <img src="static/images/iiif.png" width="50px" height="50px" alt=""> !</h3>
+      </div>
+
+      <!-- bloc 2 corps de la page -->
+      <div class="bg-2">
+        {% with messages = get_flashed_messages(with_categories=true) %}
         {% if messages %}
-            {% for message in messages %}
-            <div class="alert alert-info" role="alert">{{ message }}</div>
-            {% endfor %}
+        <div class="row">
+            <div class="col">
+              {% for category, message in messages %}
+                <div class="alert alert-{{category}}" role="alert">{{ message }}</div>
+              {% endfor %}
+            </div>
+        </div>
         {% endif %}
-        {% endwith %}
+      {% endwith %}
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
               integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
              crossorigin="anonymous"></script>
@@ -76,15 +89,10 @@
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
              integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
              crossorigin="anonymous"></script>
-
         <div class="row">
             <div class="col">
             {% block corps %}{% endblock %}
             </div>
         </div>
-      </div>
-
-      </div>
-    {% endblock %}
     </body>
 </html>
