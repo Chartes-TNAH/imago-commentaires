@@ -34,21 +34,40 @@ def commentaire(comment_id):
     simplified = []
     image = []
 
+    if data["attribution"] == "Harvard Art Museums":
+        url_image = data["rendering"]["@id"]
+        image.append(url_image)
+
+    else:
+        for item in data["sequences"][0]["canvases"]:
+            try:
+                url_image = item["images"][0]["resource"]["@id"]
+                image.append(url_image)
+
+            except:
+                error = "Pas pu récupérer d'image"
+                data = {}
+
     for item in data["metadata"]:
         try:
             identifier = item["label"]
-            simplified.append(identifier)
+
+            if ["attribution"] == "Bibliothèque nationale de France":
+                if identifier == "Language":
+                    simplified.append(item["value"][1]["@value"])
+
+                elif identifier == "Format":
+                    simplified.append(item["value"][0]["@value"], item["value"][1]["@value"],
+                                      item["value"][2]["@value"])
+
+                elif identifier == "Type":
+                    simplified.append(item["value"][1]["@value"], item["value"][3]["@value"])
+
+                else:
+                    simplified.append(identifier)
 
         except:
             error = 'Pas pu récupérer les données'
-            data = {}
-
-    for item in data["sequences"][0]["canvases"]:
-        try:
-            url_image = item["images"][0]["resource"]["@id"]
-            image.append(url_image)
-        except:
-            error = "Pas pu récupérer d'image"
             data = {}
 
     return render_template('pages/comment.html', nom='Imaginatiiif',
@@ -168,4 +187,4 @@ def deconnexion():
     if current_user.is_authenticated is True:
         logout_user()
     flash("Vous êtes déconnecté-e", "info")
-    return redirect("/")
+return redirect("/")
