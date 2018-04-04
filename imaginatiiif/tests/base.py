@@ -37,3 +37,6 @@ class Base(TestCase):
                 for fixture in self.comments:
                     self.db.session.add(fixture)
             self.db.session.commit()
+
+if __name__ == '__main__':
+    unittest.main()
