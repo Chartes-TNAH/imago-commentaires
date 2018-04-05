@@ -69,21 +69,23 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
--- -----------------------------------------------------
--- Data for table `imaginatiiif`.`place`
--- -----------------------------------------------------
 
-START TRANSACTION;
-USE `imaginatiiif`;
-INSERT INTO `imaginatiiif`.`comment` (`comment_id`, `comment_nom`, `comment_commentaire`, `comment_lien`) VALUES (0, 'Photo Bradley & Rulofson', 'Essaie1', 'http://gallica.bnf.fr/iiif/ark:/12148/btv1b8453687c/manifest.json');
-INSERT INTO `imaginatiiif`.`comment` (`comment_id`, `comment_nom`, `comment_commentaire`, `comment_lien`) VALUES (2, 'Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json');
-
-COMMIT;
 -- -----------------------------------------------------
 -- Data for table `imaginatiiif`.`user`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `imaginatiiif`;
-INSERT INTO `imaginatiiif`.`user` (`user_id`, `user_nom`, `user_login`, `user_email`, `user_password`) VALUES (1, 'Administrator', 'admin', 'admin@supersite.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
+INSERT INTO `imaginatiiif`.`user` (`user_id`,`user_nom`, `user_login`, `user_email`, `user_password`) VALUES (1,'Administrator', 'admin', 'admin@supersite.com', '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8');
+
+COMMIT;
+
+-- -----------------------------------------------------
+-- Data for table `imaginatiiif`.`comment`
+-- -----------------------------------------------------
+
+START TRANSACTION;
+USE `imaginatiiif`;
+INSERT INTO `imaginatiiif`.`comment` (`comment_nom`, `comment_commentaire`, `comment_lien`, `comment_user_id`) VALUES ('Photo Bradley & Rulofson', 'Essaie1', 'http://gallica.bnf.fr/iiif/ark:/12148/btv1b8453687c/manifest.json',1);
+INSERT INTO `imaginatiiif`.`comment` (`comment_nom`, `comment_commentaire`, `comment_lien`, `comment_user_id`) VALUES ('Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json', 1);
 
 COMMIT;
