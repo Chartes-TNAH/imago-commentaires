@@ -86,6 +86,6 @@ COMMIT;
 START TRANSACTION;
 USE `imaginatiiif`;
 INSERT INTO `imaginatiiif`.`comment` (`comment_nom`, `comment_commentaire`, `comment_lien`, `comment_user_id`) VALUES ('Photo Bradley & Rulofson', 'Essaie1', 'http://gallica.bnf.fr/iiif/ark:/12148/btv1b8453687c/manifest.json',1);
-INSERT INTO `imaginatiiif`.`comment` (`comment_nom`, `comment_commentaire`, `comment_lien`, `comment_user_id`) VALUES ('Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json', 1);
+INSERT INTO `imaginatiiif`.`comment` (`comment_nom`, `comment_commentaire`, `comment_lien`, `comment_user_id`) VALUES ('Pont du Carrousel', 'Essaie2', 'https://data.getty.edu/museum/api/iiif/61899/manifest.json',1);
 
 COMMIT;
