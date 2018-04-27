@@ -3,30 +3,43 @@ from flask import render_template, request, flash, redirect
 from .app import app, login
 from .modeles.donnees import Comment
 from .modeles.utilisateurs import User
-# from .constantes import LIEUX_PAR_PAGE
+from .constantes import COMMENTAIRE_PAR_PAGE
 from flask_login import login_user, current_user, logout_user, login_required
 
 
 @app.route("/")
 def accueil():
-    """ Route permettant l'affichage d'une page accueil
+    """ Route permettant l'affichage d'une page accueil avec 5 derniers commentaires enregistrés
+    :return: page html d'accueil
     """
-    # On a bien sûr aussi modifié le template pour refléter le changement
+
     commentaires = Comment.query.order_by(Comment.comment_id.desc()).limit(5).all()
     return render_template("pages/accueil.html", nom="Imaginatiiif", commentaires=commentaires)
 
 @app.route("/comments")
 def all_comments():
-    """ Route permettant l'affichage d'une page accueil
+    """ Route permettant l'affichage d'une page avec touts commentaires ajoutés
+    :return: page html avec une liste de commentaires
     """
-    commentaires = Comment.query.order_by(Comment.comment_id.desc()).all()
-    return render_template("pages/all_comments.html", nom="Imaginatiiif", commentaires=commentaires)
+    page = request.args.get("page", 1)
+
+    if isinstance(page, str) and page.isdigit():
+        page = int(page)
+    else:
+        page = 1
+
+    commentaires = Comment.query.order_by(Comment.comment_id).paginate(page=page, per_page=COMMENTAIRE_PAR_PAGE)
+    return render_template("pages/all_comments.html", nom="Imaginatiiif", commentaires=commentaires, page=page)
 
 @app.route("/comment/<int:comment_id>")
+
 def commentaire(comment_id):
+    """ Route permettant l'affichage d'une page avec le commentaire, l'image et les métadonnées à partir d'un manifeste
+       :param comment_id: Identifiant numérique du commentaire
+       :return: page html d'un commentaire
+       """
     import requests
 
-    # On a bien sûr aussi modifié le template pour refléter le changement
     unique_commentaire = Comment.query.get(comment_id)
     utilisateur = User.query.get(unique_commentaire.comment_user_id)
     r = requests.get(unique_commentaire.comment_lien)
@@ -80,12 +93,15 @@ def commentaire(comment_id):
 @app.route("/modif_commentaire/<int:comment_id>", methods=["GET", "POST"])
 @login_required
 def modif_commentaire(comment_id):
+    """ Route permettant modifier le commentaire
+        :param comment_id: Identifiant numérique du commentaire
+        :return: page html avec un formulaire pour modifier le commentaire"""
     commentaire = Comment.query.get(comment_id)
     if current_user.get_id() != commentaire.comment_user_id:
         flash("Vous n'avez pas l'autorisation de modifier ce commentaire", 'error')
         return render_template("pages/modif_commentaire.html", commentaire=commentaire)
 
-    (status, donnees) = Comment.modif_commentaire(
+    status, donnees = Comment.modif_commentaire(
         id=comment_id,
         nom=request.form.get("nom", None),
         lien=request.form.get("lien", None),
@@ -102,11 +118,35 @@ def modif_commentaire(comment_id):
         return render_template("pages/modif_commentaire.html", commentaire=unique_commentaire)
 
 
+@app.route("/suppression/<int:comment_id>", methods=["GET", "POST"])
+@login_required
+def suppression_comment(comment_id):
+    """ Route pour supprimer le commentaire
+    :param comment_id : identifiant numérique du commentaire
+    :return: page html de suppression
+    """
+
+    unique_commentaire = Comment.query.get(comment_id)
+    '''if current_user.get_id() != unique_commentaire.comment_user_id:
+        flash("Vous n'avez pas l'autorisation de supprimer ce commentaire", 'error')
+        return render_template("pages/comment.html", commentaire=commentaire)'''
+    if request.method == "GET":
+        return render_template("pages/suppression_comment.html", unique=unique_commentaire, all_comments=all_comments)
+    else:
+        status = Comment.delete_comment(comment_id=comment_id)
+        if status is True :
+            flash("Votre commentaire a été supprimé !", "success")
+            return redirect("/")
+        else:
+            flash("La suppression a échoué.", "danger")
+            return redirect("/")
+
 @app.route("/register", methods=["GET", "POST"])
 def inscription():
     """ Route gérant les inscriptions
+    :return: page html d'inscription
     """
-    # Si on est en POST, cela veut dire que le formulaire a été envoyé
+
     if request.method == "POST":
         statut, donnees = User.creer(
             login=request.form.get("login", None),
@@ -127,9 +167,10 @@ def inscription():
 @app.route("/nomcommentaire", methods=["GET", "POST"])
 @login_required
 def nomcommentaire():
-    """ Route gérant les inscriptions
+    """ Route gérant les ajouts des commentaires
+    :return: page html d'ajout de commentaire
     """
-    # Si on est en POST, cela veut dire que le formulaire a été envoyé
+
     if request.method == "POST":
         statut, donnees = Comment.creercomment(
             nom=request.form.get("nom", None),
@@ -151,7 +192,9 @@ def nomcommentaire():
 @app.route("/utilisateur")
 def comment_auteur():
     """ Route permettant l'affichage d'une page avec les commentaires d'un auteur
+    :return: page html avec les commentaires d'un auteur autorisé
         """
+
     commentaires = Comment.query.filter(Comment.comment_user_id == current_user.get_id()).all()
     return render_template("pages/comment_auteur.html", nom="Imaginatiiif", commentaires=commentaires)
 
@@ -159,6 +202,7 @@ def comment_auteur():
 @app.route("/connexion", methods=["POST", "GET"])
 def connexion():
     """ Route gérant les connexions
+    :return: page html de connection
     """
     if current_user.is_authenticated is True:
         flash("Vous êtes déjà connecté-e", "info")
@@ -184,6 +228,9 @@ login.login_view = 'connexion'
 
 @app.route("/deconnexion", methods=["POST", "GET"])
 def deconnexion():
+    """ Route gérant les déconnexions
+        :return: page html d'acceuil
+        """
     if current_user.is_authenticated is True:
         logout_user()
     flash("Vous êtes déconnecté-e", "info")

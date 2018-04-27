@@ -28,9 +28,19 @@
               <dt>Lien</dt><dd><a href="{{commentaire.comment_lien}}">{{commentaire.comment_lien}}</a></dd>
               <dt>Auteur</dt><dd>{{user.user_nom}}</dd>
               <dt>Commentaire</dt><dd>{{commentaire.comment_commentaire}}</dd>
+              <dt>Date</dt><dd>{{commentaire.comment_date}}</dd>
             </dl>
           {% if current_user.is_authenticated %}
-          <p><a class="nav-link" href="{{url_for('modif_commentaire', comment_id=commentaire.comment_id)}}">Editer le commentaire</a>
+            <div class="col-md container mt-3">
+              <div class="row">
+            <form class="col-3 mr-2 " method="POST" action="{{url_for('modif_commentaire', comment_id=commentaire.comment_id) }}">
+				<button type="submit" class="btn btn-success btn-sm">Editez votre commentaire</button>
+            </form>
+            <form class="col-3 ml-2" method="GET" action="{{ url_for('suppression_comment', comment_id=commentaire.comment_id) }}">
+				<button type="submit" class="btn btn-danger btn-sm">Supprimez votre commentaire</button>
+            </form>
+                </div>
+            </div>
           {%endif %}
         {% else %}
           <p>La base de données est en cours de constitution</p>
