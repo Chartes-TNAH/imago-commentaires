@@ -7,7 +7,7 @@ class Comment(db.Model):
 	comment_nom = db.Column(db.Text, nullable=False)
 	comment_commentaire = db.Column(db.Text, nullable=False)
 	comment_lien = db.Column(db.Text, nullable=False)
-	#comment_date = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+	comment_date = db.Column(db.DateTime, index=True, default=datetime.datetime.utcnow)
 	comment_user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'))
 	user = db.relationship("User", back_populates="comment")
 
@@ -23,18 +23,13 @@ class Comment(db.Model):
 		if not lien:
 			erreurs.append("Le lien fourni est vide")
 		
-		# On vérifie que le lien n'existe pas 
-		#uniques = Place.query.filter(
-		#    db.or_(Place.place_nom == nom)
-		#).count()
-		#if uniques > 0:
-		    #erreurs.append("Le nom de lieu existe déjà dans notre base de données")
+
 
 		# Si on a au moins une erreur
 		if len(erreurs) > 0:
 		    return False, erreurs
 
-		# On crée un lieu
+		# On crée un commentaire
 		comment = Comment(
 		    comment_nom=nom,
 		    comment_commentaire=commentaire,
@@ -84,3 +79,21 @@ class Comment(db.Model):
 			return True, commentaire
 		except Exception as erreur:
 			return False, [str(erreur)]
+
+	@staticmethod
+	def delete_comment(comment_id):
+		"""
+        Supprime un commentaire dans la base de données.
+        :param comment_id_id : un identifiant d'un commentaire
+        """
+
+		comment = Comment.query.get(comment_id)
+
+		try:
+
+			db.session.delete(comment)
+			db.session.commit()
+			return True
+		except Exception as failed:
+			print(failed)
+			return False
