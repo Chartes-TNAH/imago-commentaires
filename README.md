@@ -17,12 +17,12 @@ L'utilisateur doit au préalable créer un compte sur le site qui lui donne acc�
 
 Il est possible de voir les commentaires des autres uitilisateurs sans pouvoir intervenir dessus.
 
-L'application prend en charge les images au format IIIF. Elle affiche l'ensemble des images déclarées dans le manifest (une ou plusieurs vues selon la structure de l'objet numérisé) et l'ensemble des métadonnées lorsque celles-ci sont déclarées  au premier niveau du fichier JSON-LD. Ainsi nous avons testé l'ajout d'images et de commentaires pour des manifests provenant de quatre établissements différents : Le Getty, la BnF, La bodleian library et Harvard museum.
+L'application prend en charge les images au format IIIF. Elle affiche l'ensemble des images déclarées dans le manifeste (une ou plusieurs vues selon la structure de l'objet numérisé) et l'ensemble des métadonnées lorsque celles-ci sont déclarées  au premier niveau du fichier JSON-LD. Ainsi nous avons testé l'ajout d'images et de commentaires pour des manifestes provenant de quatre établissements différents : Le Getty, la BnF, la bodleian library et Harvard art museum.
 
 L'application comprend deux tables SQL : une pour gérer les comptes utilisateurs et une pour gérer les commentaires.
 Le fichier datamodel permet de générer les tables ainsi qu'un utilisateur et deux commentaires. Ces commentaires comprennent des liens vers des images au format IIIF issues de manifests de la BnF et du Getty.
 
-Deux autres  liens vers des manifests d'images en IIIF sont proposés dans l'issue #37 :
+Deux autres  liens vers des manifestes d'images en IIIF sont proposés dans l'issue #37 :
 
 - Exemple de manifeste de la digital Bodleian library :
 Shelfmark: MS. Canon. Ital. 143, map folio 3
@@ -37,7 +37,7 @@ Object Number: M26222
 Manifeste en Json: https://iiif.harvardartmuseums.org/manifests/object/55407 (ouvrir dans un éditeur de texte)
 Manifeste interprété avec le visualiseur Mirador : https://iiif.harvardartmuseums.org/viewers/mirador?manifest=https://iiif.harvardartmuseums.org/manifests/object/55407
 
-Nous n'avons pas réussi à afficher les images du manifest de Harvard art museum directement dans l'application, mais un lien est proposé à la place des images et elles s'affichent dans une nouvelle fenêtre.
+Nous n'avons pas réussi à afficher les images du manifeste de Harvard art museum directement dans l'application, mais un lien est proposé à la place des images et elles s'affichent dans une nouvelle fenêtre.
 
 
 
