@@ -22,6 +22,23 @@ L'application prend en charge les images au format IIIF. Elle affiche l'ensemble
 L'application comprend deux tables SQL : une pour gérer les comptes utilisateurs et une pour gérer les commentaires.
 Le fichier datamodel permet de générer les tables ainsi qu'un utilisateur et deux commentaires. Ces commentaires comprennent des liens vers des images au format IIIF issues de manifests de la BnF et du Getty.
 
-Deux autres  liens vers des manifests d'images en IIIF sont proposés dans l'issue #24 :
-Un de la Bodelian Library et un autre de Harvard museum.
+Deux autres  liens vers des manifests d'images en IIIF sont proposés dans l'issue #37 :
+
+- Exemple de manifeste de la digital Bodleian library :
+Shelfmark: MS. Canon. Ital. 143, map folio 3
+title: [Close-up of Venice and Genoa in portolan chart of the central and western Mediterranean and part of the Atlantic]
+Date: 1559
+Manifeste Json : https://iiif.bodleian.ox.ac.uk/iiif/manifest/c233ee09-bedc-4f21-89ba-09449b1ba69b.json
+
+- Exemple de manifeste d'Harvard Art Museums (manifest JSON-LD) :
+Libellé: The Apostle Jean Journet
+Date: 1850
+Object Number: M26222
+Manifeste en Json: https://iiif.harvardartmuseums.org/manifests/object/55407 (ouvrir dans un éditeur de texte)
+Manifeste interprété avec le visualiseur Mirador : https://iiif.harvardartmuseums.org/viewers/mirador?manifest=https://iiif.harvardartmuseums.org/manifests/object/55407
+
+Nous n'avons pas réussi à afficher les images du manifest de Harvard art museum directement dans l'application, mais un lien est proposé à la place des images et elles s'affichent dans une nouvelle fenêtre.
+
+
+
 
